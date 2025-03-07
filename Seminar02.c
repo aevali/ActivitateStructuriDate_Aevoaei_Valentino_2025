@@ -34,6 +34,11 @@ void modificaNrLocuri(struct Masina* m, int nrNou) {
 		m->nrLocuri = nrNou;
 }
 
+void afisareVector(struct Masina* vector, int nrElemente) {
+	for (int i = 0; i < nrElemente; i++)
+		afisare(vector[i]);
+}
+
 int main()
 {
 
