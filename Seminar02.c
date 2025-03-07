@@ -39,6 +39,16 @@ void afisareVector(struct Masina* vector, int nrElemente) {
 		afisare(vector[i]);
 }
 
+struct Masina* copiazaPrimeleMasini(struct Masina* vector, int nrElemente, int nrElementeCopiate) {
+	if (nrElementeCopiate > nrElemente)
+		nrElementeCopiate = nrElemente;
+	struct Masina* vectorNou = NULL;
+	vectorNou = (struct Masina*)malloc(nrElementeCopiate * sizeof(struct Masina));
+	for (int i = 0; i < nrElementeCopiate; i++)
+		vectorNou[i] = initializare(vector[i].id, vector[i].nrLocuri, vector[i].marca, vector[i].capacitateC, vector[i].normaPoluare);
+	return vectorNou;
+}
+
 int main()
 {
 
