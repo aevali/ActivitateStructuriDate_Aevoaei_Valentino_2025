@@ -94,6 +94,11 @@ int main()
 	vector[2] = initializare(3, 5, "Dacia", 50, '3');
 	afisareVector(vector, nrElem);
 
-
+	struct Masina* vectorMasiniCopiate;
+	int nrElemCopiate = 2;
+	vectorMasiniCopiate = copiazaPrimeleMasini(vector, nrElem, nrElemCopiate);
+	printf("\n-------Afisare masini copiate-------\n");
+	afisareVector(vectorMasiniCopiate, nrElemCopiate);
+	dezalocare(&vectorMasiniCopiate, &nrElemCopiate);
 
 }
