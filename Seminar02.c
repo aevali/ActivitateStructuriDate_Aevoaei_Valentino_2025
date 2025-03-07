@@ -77,6 +77,13 @@ void copiazaMasiniCuCCMare(struct Masina* vector, char nrElemente, float prag, s
 	}
 }
 
+struct Masina getPrimaMasinaDupaMarca(struct Masina* vector, int nrElemente, const char* conditie) {
+	for (int i = 0; i < nrElemente; i++)
+		if (strcmp(vector[i].marca, conditie) == 0)
+			return vector[i];
+	return initializare(1, 0, NULL, 0, '0');
+}
+
 
 
 int main()
