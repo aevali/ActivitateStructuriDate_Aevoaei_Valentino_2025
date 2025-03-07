@@ -49,3 +49,5 @@ int main() {
 	afisare(masina);
 	return 0;
 }
+
+//test comentariu
