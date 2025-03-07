@@ -101,4 +101,9 @@ int main()
 	afisareVector(vectorMasiniCopiate, nrElemCopiate);
 	dezalocare(&vectorMasiniCopiate, &nrElemCopiate);
 
+	printf("\n-------Afisare masini cu CC mai mare------\n");
+	copiazaMasiniCuCCMare(vector, nrElem, 35, &vectorMasiniCopiate, &nrElemCopiate);
+	afisareVector(vectorMasiniCopiate, nrElemCopiate);
+	dezalocare(&vectorMasiniCopiate, &nrElemCopiate);
+
 }
