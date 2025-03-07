@@ -57,6 +57,26 @@ void dezalocare(struct Masina** vector, int* nrElemente) {
 	*nrElemente = 0;
 }
 
+void copiazaMasiniCuCCMare(struct Masina* vector, char nrElemente, float prag, struct Masina** vectorNou, int* dimensiune) {
+	*dimensiune = 0;
+	for (char i = 0; i < nrElemente; i++)
+		if (prag < vector[i].capacitateC)
+			(*dimensiune)++;
+	if (*dimensiune > 0)
+	{
+		int j = 0;
+		*vectorNou = (struct Masina*)malloc((*dimensiune) * sizeof(struct Masina));
+		for(int i=0; i<nrElemente;i++)
+			if (prag < vector[i].capacitateC)
+			{
+				(*vectorNou)[j] = vector[i];
+				(*vectorNou)[j].marca = malloc(sizeof(char*) * strlen(vector[i].marca) + 1);
+				strcpy_s((*vectorNou)[j].marca, strlen(vector[i].marca) + 1, vector[i].marca);
+				j++;
+			}
+	}
+}
+
 
 
 int main()
