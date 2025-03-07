@@ -84,9 +84,16 @@ struct Masina getPrimaMasinaDupaMarca(struct Masina* vector, int nrElemente, con
 	return initializare(1, 0, NULL, 0, '0');
 }
 
-
-
 int main()
 {
+	struct Masina* vector;
+	int nrElem = 3;
+	vector = (struct Masina*)malloc(nrElem * sizeof(struct Masina));
+	vector[0] = initializare(1, 3, "Dacia", 40, '5');
+	vector[1] = initializare(2, 5, "Honda", 30, '6');
+	vector[2] = initializare(3, 5, "Dacia", 50, '3');
+	afisareVector(vector, nrElem);
+
+
 
 }
