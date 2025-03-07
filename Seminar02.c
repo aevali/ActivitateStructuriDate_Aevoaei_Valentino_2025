@@ -49,6 +49,11 @@ struct Masina* copiazaPrimeleMasini(struct Masina* vector, int nrElemente, int n
 	return vectorNou;
 }
 
+void dezalocare(struct Masina** vector, int* nrElemente) {
+	for (int i = 0; i < *nrElemente; i++)
+		free((*vector)[i].marca);
+}
+
 int main()
 {
 
