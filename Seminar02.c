@@ -106,4 +106,10 @@ int main()
 	afisareVector(vectorMasiniCopiate, nrElemCopiate);
 	dezalocare(&vectorMasiniCopiate, &nrElemCopiate);
 
+	struct Masina m1 = getPrimaMasinaDupaMarca(vector, nrElem, "Dacia");
+	printf("\n-------Afisare masina dupa marca-------\n");
+	afisare(m1);
+	dezalocare(&vector, &nrElem);
+
+	return 0;
 }
