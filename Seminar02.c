@@ -25,6 +25,10 @@ struct Masina initializare(int id, int nrLocuri, const char* marca, float capaci
 	return m;
 }
 
+void afisare(struct Masina m) {
+	printf("\n Id masina: %d\n Nr locuri: %d\n Capacitate: %.2f\n Marca: %s\n Euro: %c\n", m.id, m.nrLocuri, m.capacitateC, m.marca, m.normaPoluare);
+}
+
 int main()
 {
 
