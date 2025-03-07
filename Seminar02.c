@@ -29,6 +29,11 @@ void afisare(struct Masina m) {
 	printf("\n Id masina: %d\n Nr locuri: %d\n Capacitate: %.2f\n Marca: %s\n Euro: %c\n", m.id, m.nrLocuri, m.capacitateC, m.marca, m.normaPoluare);
 }
 
+void modificaNrLocuri(struct Masina* m, int nrNou) {
+	if (nrNou > 0)
+		m->nrLocuri = nrNou;
+}
+
 int main()
 {
 
