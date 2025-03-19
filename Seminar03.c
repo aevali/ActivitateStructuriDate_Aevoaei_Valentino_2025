@@ -13,6 +13,17 @@ struct StructuraMasina {
 };
 typedef struct StructuraMasina Masina;
 
+void afisareMasina(Masina masina) {
+	printf("ID: %d\n", masina.id);
+	printf("Numar usi: %d\n", masina.nrUsi);
+	printf("Pret: %.2f\n", masina.pret);
+	printf("Model: %s\n", masina.model);
+	printf("Nume sofer: %s\n", masina.numeSofer);
+	printf("Serie: %f\n\n", masina.serie);
+}
+
+
+
 int main()
 {
 
