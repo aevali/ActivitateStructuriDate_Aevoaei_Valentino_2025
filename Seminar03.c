@@ -22,7 +22,7 @@ void afisareMasina(Masina masina) {
 	printf("Serie: %f\n\n", masina.serie);
 }
 
-void afisareVectorMasini(Masina** masini, int* nrMasini, Masina masinaNoua) {
+void adaugaMasinaInVector(Masina** masini, int* nrMasini, Masina masinaNoua) {
 	Masina* aux = (Masina*)malloc(sizeof(Masina) * (*nrMasini) + 1);
 	for (int i = 0; i < *nrMasini; i++)
 		aux[i] = (*masini)[i];
@@ -51,6 +51,8 @@ Masina citireMasinaFisier(FILE* file) {
 	m1.serie = *strtok(NULL, sep); // sau cu index de 0 [0]
 	return m1;
 }
+
+
 
 int main()
 {
