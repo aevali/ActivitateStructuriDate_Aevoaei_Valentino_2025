@@ -22,7 +22,15 @@ void afisareMasina(Masina masina) {
 	printf("Serie: %f\n\n", masina.serie);
 }
 
-
+void afisareVectorMasini(Masina** masini, int* nrMasini, Masina masinaNoua) {
+	Masina* aux = (Masina*)malloc(sizeof(Masina) * (*nrMasini) + 1);
+	for (int i = 0; i < *nrMasini; i++)
+		aux[i] = (*masini)[i];
+	aux[(*nrMasini)] = masinaNoua;
+	(*nrMasini)++;
+	free(*masini);
+	(*masini) = NULL;
+}
 
 int main()
 {
