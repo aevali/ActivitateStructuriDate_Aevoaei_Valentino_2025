@@ -67,7 +67,15 @@ Masina* citireVectorMasiniFisier(const char* numeFisier, int* nrMasiniCitite) {
 	return masini;
 }
 
-
+void dezalocareVectorMasini(Masina** vector, int* nrMasini) {
+	for (int i = 0; i < *nrMasini; i++) {
+		free((*vector)[i].model);
+		free((*vector)[i].numeSofer);
+		free(*vector);
+		*vector = NULL;
+		*nrMasini = 0;
+	}
+}
 
 int main()
 {
