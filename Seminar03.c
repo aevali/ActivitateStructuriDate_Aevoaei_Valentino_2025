@@ -32,6 +32,11 @@ void adaugaMasinaInVector(Masina** masini, int* nrMasini, Masina masinaNoua) {
 	(*masini) = NULL;
 }
 
+void afisareVectorMasini(Masina* masini, int nrMasini) {
+	for (int i = 0; i < nrMasini; i++)
+		afisareMasina(masini[i]);
+}
+
 Masina citireMasinaFisier(FILE* file) {
 	char buffer[100];
 	char sep[3] = ",\n";
