@@ -19,11 +19,11 @@ void afisareMasina(Masina masina) {
 	printf("Pret: %.2f\n", masina.pret);
 	printf("Model: %s\n", masina.model);
 	printf("Nume sofer: %s\n", masina.numeSofer);
-	printf("Serie: %f\n\n", masina.serie);
+	printf("Serie: %c\n\n", masina.serie);
 }
 
 void adaugaMasinaInVector(Masina** masini, int* nrMasini, Masina masinaNoua) {
-	Masina* aux = (Masina*)malloc(sizeof(Masina) * (*nrMasini) + 1);
+	Masina* aux = (Masina*)malloc(sizeof(Masina) * ((*nrMasini) + 1));
 	for (int i = 0; i < *nrMasini; i++)
 		aux[i] = (*masini)[i];
 	aux[(*nrMasini)] = masinaNoua;
@@ -52,7 +52,7 @@ Masina citireMasinaFisier(FILE* file) {
 	strcpy_s(m1.model, strlen(aux) + 1, aux);
 	aux = strtok(NULL, sep);
 	m1.numeSofer = malloc(strlen(aux) + 1);
-	strpy_s(m1.numeSofer, strlen(aux) + 1, aux);
+	strcpy_s(m1.numeSofer, strlen(aux) + 1, aux);
 	m1.serie = *strtok(NULL, sep); // sau cu index de 0 [0]
 	return m1;
 }
@@ -93,5 +93,12 @@ float pretMediuDupaNrUsi(Masina* vector, int nrMasini, int nrUsi) {
 
 int main()
 {
-
+	Masina* masini = NULL;
+	int nrMasini = 0;
+	masini = citireVectorMasiniFisier("masini.txt", &nrMasini);
+	afisareVectorMasini(masini, nrMasini);
+	float medie = pretMediuDupaNrUsi(masini, nrMasini, 6);
+	printf("%.2f", medie);
+	dezalocareVectorMasini(&masini, &nrMasini);
+	return 0;
 }
