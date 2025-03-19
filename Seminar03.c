@@ -57,6 +57,16 @@ Masina citireMasinaFisier(FILE* file) {
 	return m1;
 }
 
+Masina* citireVectorMasiniFisier(const char* numeFisier, int* nrMasiniCitite) {
+	FILE* file = fopen(numeFisier, "r");
+	Masina* masini = NULL;
+	do {
+		adaugaMasinaInVector(&masini, nrMasiniCitite, citireMasinaFisier(file));
+	} while (!feof(file));
+	fclose(file);
+	return masini;
+}
+
 
 
 int main()
