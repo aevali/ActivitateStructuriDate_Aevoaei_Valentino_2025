@@ -77,6 +77,20 @@ void dezalocareVectorMasini(Masina** vector, int* nrMasini) {
 	}
 }
 
+float pretMediuDupaNrUsi(Masina* vector, int nrMasini, int nrUsi) {
+	int suma = 0;
+	int index = 0;
+	for (int i = 0; i < nrMasini; i++) {
+		if (vector[i].nrUsi == nrUsi) {
+			suma += vector[i].pret;
+			index++;
+		}
+	}
+	if (index > 0)
+		return suma / index;
+	return 0;
+}
+
 int main()
 {
 
