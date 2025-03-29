@@ -3,9 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-//trebuie sa folositi fisierul masini.txt
-//sau va creati un alt fisier cu alte date
-
 struct StructuraMasina {
 	int id;
 	int nrUsi;
@@ -14,11 +11,7 @@ struct StructuraMasina {
 	char* numeSofer;
 	unsigned char serie;
 };
-typedef struct StructuraMasina Masina;
-
-//creare structura pentru un nod dintr-o lista dublu inlantuita
-
-//creare structura pentru Lista Dubla 
+typedef struct StructuraMasina Masina; 
 
 struct Nod {
 	Masina info;
@@ -155,15 +148,49 @@ float calculeazaPretMediu(Lista lista) {
 	return sum / contor;
 }
 
-void stergeMasinaDupaID(/*lista masini*/ int id) {
-	//sterge masina cu id-ul primit.
-	//tratati situatia ca masina se afla si pe prima pozitie, si pe ultima pozitie
+void stergeMasinaDupaID(Lista* lista, int id) {
+	Nod* p = lista->prim;
+	while (p) {
+		if (p->info.id == id) {
+			if (p->precedent) {
+				p->precedent->urmator = p->urmator;
+			}
+			else {
+				lista->prim = p->urmator;
+			}
+
+			if (p->urmator) {
+				p->urmator->precedent = p->precedent;
+			}
+			else {
+				lista->ultim = p->precedent;
+			}
+			free(p->info.model);
+			free(p->info.numeSofer);
+			free(p);
+			return;
+		}
+		p = p->urmator;
+	}
+
 }
 
-char* getNumeSoferMasinaScumpa(/*lista dublu inlantuita*/) {
-	//cauta masina cea mai scumpa si 
-	//returneaza numele soferului acestei maasini.
-	return NULL;
+char* getNumeSoferMasinaScumpa(Lista lista) {
+	float pretMaxim = 0;
+	char* numeSofer = NULL;
+	Nod* aux = lista.prim;
+	while (aux) {
+		if (aux->info.pret > pretMaxim) {
+			pretMaxim = aux->info.pret;
+			if (numeSofer) {
+				free(numeSofer);
+			}
+			numeSofer = (char*)malloc(strlen(aux->info.numeSofer) + 1);
+			strcpy(numeSofer, aux->info.numeSofer);
+		}
+		aux = aux->urmator;
+	}
+	return numeSofer;
 }
 
 int main() {
@@ -173,7 +200,11 @@ int main() {
 	afisareListaMasiniSfarsit(lista);
 	
 	float pretMediu = calculeazaPretMediu(lista);
-	printf("Pret mediu: %.2f", pretMediu);
+	printf("Pret mediu: %.2f\n", pretMediu);
+	char* sofer = getNumeSoferMasinaScumpa(lista);
+	printf("Soferul cu cea mai scumpa masina: %s", sofer);
+	stergeMasinaDupaID(&lista,9);
+	//afisareListaMasiniSfarsit(lista);
 
 	dezalocareLDMasini(&lista);
 	return 0;
