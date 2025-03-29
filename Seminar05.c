@@ -11,7 +11,7 @@ struct StructuraMasina {
 	char* numeSofer;
 	unsigned char serie;
 };
-typedef struct StructuraMasina Masina; 
+typedef struct StructuraMasina Masina;
 
 struct Nod {
 	Masina info;
@@ -198,12 +198,12 @@ int main() {
 	lista = citireLDMasiniDinFisier("masini.txt");
 	//afisareListaMasiniInceput(lista);
 	afisareListaMasiniSfarsit(lista);
-	
+
 	float pretMediu = calculeazaPretMediu(lista);
 	printf("Pret mediu: %.2f\n", pretMediu);
 	char* sofer = getNumeSoferMasinaScumpa(lista);
 	printf("Soferul cu cea mai scumpa masina: %s", sofer);
-	stergeMasinaDupaID(&lista,9);
+	stergeMasinaDupaID(&lista, 9);
 	//afisareListaMasiniSfarsit(lista);
 
 	dezalocareLDMasini(&lista);
